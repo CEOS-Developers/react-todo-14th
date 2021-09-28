@@ -1,0 +1,16 @@
+.todoTitle {
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-align: left;
+  margin-left: 1rem;
+}
+
+.todoList {
+  text-align: left;
+  font-size: 1.3rem;
+  height: 18rem;
+}
+
+.todoList li {
+  margin: 10px;
+}

@@ -1,0 +1,16 @@
+.doneTitle {
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-align: left;
+  margin-left: 1rem;
+}
+
+.doneList {
+  text-align: left;
+  font-size: 1.3rem;
+  height: 18rem;
+}
+
+.doneList li {
+  margin: 10px;
+}
