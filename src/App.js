@@ -1,4 +1,5 @@
 import Mainpage from "./components/mainpage/components.mainpage";
+import "./App.css";
 
 function App() {
   return (
