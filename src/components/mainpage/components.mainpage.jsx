@@ -1,7 +1,14 @@
 import React from "react";
+import TodoList from "../lists/components.lists.todolist";
+import DoneList from "../lists/component.lists.donelist";
 
 function Mainpage() {
-  return <div>HelloWorld</div>;
+  return (
+    <div>
+      <TodoList />
+      <DoneList />
+    </div>
+  );
 }
 
 export default Mainpage;
