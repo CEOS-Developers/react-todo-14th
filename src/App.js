@@ -5,6 +5,8 @@ import Container from './components/Container';
 import ItemListContainer from './components/ItemListContainer';
 import TodoFormContainer from './components/TodoFormContainer'
 
+import uuidv4 from './utils/random';
+
 function App() {
 
   const [todoList,setTodoList] = useState([]);
@@ -42,7 +44,7 @@ function App() {
   const handleSubmit = (input) => {
     if(input !== undefined && input !== ''){
       const newTodoList = {
-        id:todoList.length + 1,
+        id:uuidv4(),
         text:input,
         isDone:false
       }
