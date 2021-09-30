@@ -4,10 +4,12 @@ import styled from 'styled-components';
 import TodoInput from './TodoInput';
 import TodoList from './TodoList';
 function TodoTemplate() {
-  const [todoList, setTodoList] = useState([]);
+  const [todoList, setTodoList] = useState(() =>
+    JSON.parse(window.localStorage.getItem('todo'))
+  );
   useEffect(() => {
-    console.log(todoList);
-  });
+    window.localStorage.setItem('todo', JSON.stringify(todoList));
+  }, [todoList]);
 
   return (
     <TodoTemplateBlock>
