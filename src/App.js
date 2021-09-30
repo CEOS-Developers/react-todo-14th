@@ -1,66 +1,66 @@
 import './App.css';
 import React, { useState } from "react";
-import {MdClear, MdAddCircle} from 'react-icons/md'
+import {MdClear, MdAddCircle, MdCheckCircle} from 'react-icons/md'
+import{v4 as UuidV4} from "uuid";
 
 const App = () => {
-  const [todos, setTodos] = useState([
-    {
-      id:1,
-      text: '할 일 목록 1',
-      done: false
-    },
-    {
-      id:2,
-      text: '할 일 목록 2',
-      done: false
-    },
-    {
-      id:3,
-      text: '할 일 목록 3',
-      done: false
-    },
-  ]
-  )
-  return <div className='Background'>
-  <div className='do-list'>아직 완료 안된 일 (0)</div>
-  <UnDoneList  todos={todos}/>
-  <div className='do-list'>완료된 일 (0) </div>
+  const [input, setInput] = useState("");
+  const [todos, setTodos] = useState([]);
 
-  <AddList />
+  return <div className='Background'>
+  <div className='do-list'>아직 완료 안된 일 ()</div>
+  <UnDoneList  todos={todos} setTodos = {setTodos}/>
+  <div className='do-list'>완료된 일 (0) </div>
+  <Form 
+  input = {input}
+  setInput = {setInput}
+  todos = {todos}
+  setTodos = {setTodos}
+  />
   </div>
 }
 
-const UnDoneList = ({todos}) => {
-  return <div>{todos.map(todo => (<WrittenList todo={todo} key={todo.id}/>))}</div>
-}
-
-const DoneList  = ({todos}) => {
-  //return <div>{todos.map(todo => (<WrittenList todo={todo} key={todo.id}/>))}</div>
-}
-
-const WrittenList = ({todo}) => {
-  const {id,text,done} = todo;
+const Form = ({input, setInput, todos, setTodos}) => {
+  const onInputChange = (event) =>{
+    setInput(event.target.value);
+  }
+  const onFormSubmit = (event) =>{
+    event.preventDefault();
+    setTodos([...todos, {id:UuidV4(), title:input, completed:false}]);
+    setInput("");
+  }
   return (
-    <div className="WrittenList">
-      <div>{text}</div>
-      <div className={'content'}>
-        {<MdClear />}
-      </div>
-    </div>
+    <form onSubmit={onFormSubmit}>
+      <input type = 'text' placeholder='enter a todo...' className='task-input' value={input} required onChange={onInputChange}  />
+      <button className='button-add' type='submit'>{<MdAddCircle />}</button>
+    </form>
   )
 }
-
-function AddList(){
-  return (
-      <form>
-        <input
-          type="text"
-          name="text"
-          placeholder="이곳에 할일을 입력하세요.."/>
-        <button type="submit">
-          {<MdAddCircle />}
-        </button>
-      </form>
-  );
+const UnDoneList = ({todos, setTodos}) => {
+ return (
+   <div>
+     {todos.map((todo) => (
+       <li className="todo-list" key={todo.id}>
+         <input type='text' value={todo.title} className='list' onChange={(event)=>event.preventDefault()} />
+         <div>
+           <button className="delete-button">
+           <div className={'content'}>
+             {<MdClear />}
+             </div>
+           </button>
+           <button className="check-button">
+           <div className={'content'}>
+             {<MdCheckCircle />}
+             </div>
+           </button>
+         </div>
+       </li>
+     ))}
+   </div>
+ )
 }
+
+
+
+
 export default App;
