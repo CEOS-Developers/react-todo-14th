@@ -21,8 +21,8 @@ function App() {
   return (
     <Wrapper>
       <Template>
-        {/* <Insert />
-      <TodoList /> */}
+        <Insert />
+        {/* <TodoList /> */}
       </Template>
     </Wrapper>
   );
