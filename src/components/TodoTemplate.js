@@ -11,7 +11,11 @@ function TodoTemplate() {
 
   return (
     <TodoTemplateBlock>
-      <TodoList title={'대기중'} todoList={todoList}></TodoList>
+      <TodoList
+        title={'대기중'}
+        todoList={todoList}
+        setTodoList={setTodoList}
+      ></TodoList>
       <TodoList title={'완료됨'}></TodoList>
       <TodoInput todoList={todoList} setTodoList={setTodoList}></TodoInput>
     </TodoTemplateBlock>

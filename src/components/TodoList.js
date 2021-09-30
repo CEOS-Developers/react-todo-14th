@@ -1,13 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import TodoItem from './TodoItem';
-function TodoList({ title, todoList }) {
+function TodoList({ title, todoList, setTodoList }) {
   return (
     <Wrapper>
       <Title>{title}</Title>
-      {todoList && // todoList가 있을때만 출력
+      {todoList &&
         todoList.map((todoItem) => (
-          <TodoItem key={todoItem.id} todoItem={todoItem} />
+          <TodoItem
+            key={todoItem.id}
+            todoItem={todoItem}
+            todoList={todoList}
+            setTodoList={setTodoList}
+          />
         ))}
     </Wrapper>
   );

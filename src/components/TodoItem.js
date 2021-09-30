@@ -1,11 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import bin from '../img/bin.png';
-function TodoItem({ todoItem }) {
+function TodoItem({ todoList, todoItem, setTodoList }) {
+  const deleteTodo = () => {
+    todoList = todoList.filter((todo) => todo.id !== todoItem.id);
+    setTodoList(todoList);
+  };
   return (
     <TodoItemWrapper>
       <Todo>{todoItem.content}</Todo>
-      <DeleteButton>
+      <DeleteButton onClick={deleteTodo}>
         <Img src={bin}></Img>
       </DeleteButton>
     </TodoItemWrapper>
