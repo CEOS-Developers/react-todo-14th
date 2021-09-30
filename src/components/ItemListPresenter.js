@@ -6,7 +6,7 @@ export const ListHeader = styled.h3`
 `
 
 export const ListContainer = styled.ul`
-    flex-grow: 1;
+    flex: 1;
     margin-left: 15px;
     margin-right: 15px;
     display: flex;
