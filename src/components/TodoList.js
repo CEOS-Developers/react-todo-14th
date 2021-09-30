@@ -1,19 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
 import TodoItem from './TodoItem';
-function TodoList({ title, todoList, setTodoList }) {
+function TodoList({ title, isDone, todoList, setTodoList }) {
   return (
     <Wrapper>
       <Title>{title}</Title>
       {todoList &&
-        todoList.map((todoItem) => (
-          <TodoItem
-            key={todoItem.id}
-            todoItem={todoItem}
-            todoList={todoList}
-            setTodoList={setTodoList}
-          />
-        ))}
+        todoList.map((todoItem) =>
+          //대기중과 완료된 일을 구분
+          todoItem.isDone === isDone ? (
+            <TodoItem
+              key={todoItem.id}
+              todoItem={todoItem}
+              todoList={todoList}
+              setTodoList={setTodoList}
+            />
+          ) : (
+            ''
+          )
+        )}
     </Wrapper>
   );
 }

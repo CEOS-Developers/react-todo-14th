@@ -6,9 +6,16 @@ function TodoItem({ todoList, todoItem, setTodoList }) {
     todoList = todoList.filter((todo) => todo.id !== todoItem.id);
     setTodoList(todoList);
   };
+  const toggleTodo = () => {
+    todoList = todoList.map((todo) => ({
+      ...todo,
+      isDone: todo.id === todoItem.id ? !todo.isDone : todo.isDone, //선택한 todo의 완료 여부를 반전
+    }));
+    setTodoList(todoList);
+  };
   return (
     <TodoItemWrapper>
-      <Todo>{todoItem.content}</Todo>
+      <Todo onClick={toggleTodo}>{todoItem.content}</Todo>
       <DeleteButton onClick={deleteTodo}>
         <Img src={bin}></Img>
       </DeleteButton>

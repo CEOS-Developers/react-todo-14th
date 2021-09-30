@@ -15,8 +15,14 @@ function TodoTemplate() {
         title={'대기중'}
         todoList={todoList}
         setTodoList={setTodoList}
+        isDone={false}
       ></TodoList>
-      <TodoList title={'완료됨'}></TodoList>
+      <TodoList
+        title={'완료됨'}
+        todoList={todoList}
+        setTodoList={setTodoList}
+        isDone={true}
+      ></TodoList>
       <TodoInput todoList={todoList} setTodoList={setTodoList}></TodoInput>
     </TodoTemplateBlock>
   );
