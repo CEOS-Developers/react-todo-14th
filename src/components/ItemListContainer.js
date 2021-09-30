@@ -8,12 +8,10 @@ const TodoList = (props) => {
     const {name,todoList} = props;
 
     const handleToggle = (element) => {
-        //console.log(element);
         const tempData = {
             ...element,
             isDone: !element.isDone
         }
-        //console.log(tempData);
         props.onToggle(tempData);
     }
 
@@ -22,6 +20,7 @@ const TodoList = (props) => {
             return(
                 <Fragment key={index}>
                     <li onClick={()=>handleToggle(element)}>{element.text}</li>
+
                 </Fragment>
             )
         })
@@ -29,7 +28,7 @@ const TodoList = (props) => {
 
     return(
         <> 
-            <ListHeader>{name}</ListHeader>
+            <ListHeader>{name}({todoList.length})</ListHeader>
             <ListContainer>
             {renderItems(todoList)}
             </ListContainer>
