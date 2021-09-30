@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+const Container = styled.div`
   width: 350px;
   height: 600px;
 
@@ -18,3 +18,4 @@ export const Container = styled.div`
     height: 480px;
   }
 `
+export default Container;
