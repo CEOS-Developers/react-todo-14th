@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState } from "react";
-import {MdClear} from 'react-icons/md'
+import {MdClear, MdAddCircle} from 'react-icons/md'
 
 const App = () => {
   const [todos, setTodos] = useState([
@@ -13,39 +13,54 @@ const App = () => {
       id:2,
       text: '할 일 목록 2',
       done: false
-    }
+    },
+    {
+      id:3,
+      text: '할 일 목록 3',
+      done: false
+    },
   ]
   )
-  return <div>
-    <div>대기 중 (0) </div>
-  <div>아직 완료 안된 일</div>
+  return <div className='Background'>
+  <div className='do-list'>아직 완료 안된 일 (0)</div>
   <UnDoneList  todos={todos}/>
-  <div>완료된 일</div>
+  <div className='do-list'>완료된 일 (0) </div>
 
+  <AddList />
   </div>
 }
 
 const UnDoneList = ({todos}) => {
-  return <div>{todos.map(todo => (<WriteList todo={todo} key={todo.id}/>))}</div>
+  return <div>{todos.map(todo => (<WrittenList todo={todo} key={todo.id}/>))}</div>
 }
 
-const DoneList  = () => {
-
+const DoneList  = ({todos}) => {
+  //return <div>{todos.map(todo => (<WrittenList todo={todo} key={todo.id}/>))}</div>
 }
 
-const WriteList = ({todo}) => {
+const WrittenList = ({todo}) => {
   const {id,text,done} = todo;
   return (
-    <div className="WriteList">
+    <div className="WrittenList">
       <div>{text}</div>
-      <div className={'content ${done}'}>
+      <div className={'content'}>
         {<MdClear />}
       </div>
     </div>
   )
 }
 
-const AddList = () => {
-
+function AddList(){
+  return (
+      <form>
+        <input
+          type="text"
+          name="text"
+          placeholder="이곳에 할일을 입력하세요.."/>
+        <button type="submit">
+          {<MdAddCircle />}
+        </button>
+      </form>
+  );
 }
 export default App;
