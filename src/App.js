@@ -1,5 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import Template from "./components/Template";
+import Insert from "./components/Insert";
+import TodoList from "./components/TodoList";
 
 const Wrapper = styled.div`
   display: flex;
@@ -11,23 +14,16 @@ const Wrapper = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-`;
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 360px;
-  height: 600px;
-  border-radius: 10px;
-  box-shadow: 0 0 25px gray;
+  background: #f3bdca;
 `;
 
 function App() {
   return (
     <Wrapper>
-      <Container>
-        <h2>TO DO LIST</h2>
-      </Container>
+      <Template>
+        {/* <Insert />
+      <TodoList /> */}
+      </Template>
     </Wrapper>
   );
 }
