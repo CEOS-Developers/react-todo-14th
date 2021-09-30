@@ -8,19 +8,19 @@ const ListBox = styled.div`
   height: 9rem;
   overflow-y: scroll;
 `;
-const TodoListItem = styled.div``;
+const DoneListItem = styled.div``;
 
-const TodoList = () => {
+const DoneList = () => {
   return (
     <div>
-      <h2>TO DO (0)</h2>
+      <h2>DONE (0)</h2>
       <ListBox>
-        <TodoListItem />
-        <TodoListItem />
-        <TodoListItem />
+        <DoneListItem />
+        <DoneListItem />
+        <DoneListItem />
       </ListBox>
     </div>
   );
 };
 
-export default TodoList;
+export default DoneList;

@@ -8,7 +8,6 @@ const Container = styled.div`
   height: 40rem;
   border-radius: 10px;
   box-shadow: 0 0 25px gray;
-  //background-color: #a2a4dd;
   background: #c8c1e4;
   padding-left: 1rem;
 `;
@@ -19,7 +18,7 @@ function Template({ children }) {
   return (
     <Container>
       <header>
-        <h2>TO DO LIST</h2>
+        <h2>오늘 할 일</h2>
       </header>
       <Content>{children}</Content>
     </Container>

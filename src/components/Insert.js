@@ -21,6 +21,9 @@ const Button = styled.button`
   outline: none;
   font-size: 1.5rem;
   margin-right: 1rem;
+  &:hover {
+    background: #a2a4dd;
+  }
 `;
 
 const Insert = () => {

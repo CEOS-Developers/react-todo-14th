@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Template from "./components/Template";
 import Insert from "./components/Insert";
 import TodoList from "./components/TodoList";
+import DoneList from "./components/DoneList";
 
 const Wrapper = styled.div`
   display: flex;
@@ -22,7 +23,8 @@ function App() {
     <Wrapper>
       <Template>
         <Insert />
-        {/* <TodoList /> */}
+        <TodoList />
+        <DoneList />
       </Template>
     </Wrapper>
   );
