@@ -1,6 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import bin from '../img/bin.png';
+import choonsik from '../img/choonsik.png';
 function TodoItem({ todoList, todoItem, setTodoList }) {
   const deleteTodo = () => {
     todoList = todoList.filter((todo) => todo.id !== todoItem.id);
@@ -15,9 +16,12 @@ function TodoItem({ todoList, todoItem, setTodoList }) {
   };
   return (
     <TodoItemWrapper>
-      <Todo onClick={toggleTodo}>{todoItem.content}</Todo>
+      <Todo onClick={toggleTodo} isDone={todoItem.isDone}>
+        <TodoImg src={choonsik}></TodoImg>
+        {todoItem.content}
+      </Todo>
       <DeleteButton onClick={deleteTodo}>
-        <Img src={bin}></Img>
+        <DeleteImg src={bin}></DeleteImg>
       </DeleteButton>
     </TodoItemWrapper>
   );
@@ -30,7 +34,16 @@ const TodoItemWrapper = styled.div`
   margin-top: 20px;
   cursor: pointer;
 `;
-const Todo = styled.div``;
+const Todo = styled.div`
+  display: flex;
+  align-items: center;
+  ${(props) =>
+    props.isDone &&
+    css`
+      text-decoration: line-through;
+      color: lightgray;
+    `}
+`;
 const DeleteButton = styled.button`
   width: 20px;
   height: 20px;
@@ -39,8 +52,16 @@ const DeleteButton = styled.button`
   background-size: fit;
   cursor: pointer;
 `;
-const Img = styled.img`
+const TodoImg = styled.img`
+  width: 40px;
+  height: 40px;
+`;
+const DeleteImg = styled.img`
   width: 20px;
   height: 20px;
+  opacity: 0;
+  &:hover {
+    opacity: 1;
+  }
 `;
 export default TodoItem;

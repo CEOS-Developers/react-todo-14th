@@ -42,10 +42,11 @@ const Input = styled.input`
 const TodoButton = styled.button`
   width: 30px;
   height: 30px;
-  background-color: #2ec1ac;
+  background-color: #ffe990;
   border-radius: 50%;
   text-align: center;
   color: white;
   border: none;
+  cursor: pointer;
 `;
 export default TodoInput;
