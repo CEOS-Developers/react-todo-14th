@@ -1,8 +1,11 @@
 import React, { Fragment } from 'react';
 import {
     ListHeader,
-    ListContainer
+    ListContainer,
+    DeleteBtn,
+    List
 }from './ItemListPresenter';
+
 
 const TodoList = (props) => {
     const {name,todoList} = props;
@@ -15,13 +18,17 @@ const TodoList = (props) => {
         props.onToggle(tempData);
     }
 
+    const handleDelete = (element) => {
+        props.onDeleteBtnPressed(element.id);
+    }
+
     function renderItems(item){
         return item.map((element,index)=>{
             return(
-                <Fragment key={index}>
+                <List key={index}>
                     <li onClick={()=>handleToggle(element)}>{element.text}</li>
-
-                </Fragment>
+                    <DeleteBtn onClick={()=>handleDelete(element)}><img src="/img/bin.png" width="20px" alt="bin"></img></DeleteBtn>
+                </List>
             )
         })
     }

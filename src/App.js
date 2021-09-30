@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import './App.css';
 
 import Container from './components/Container';
@@ -7,7 +7,22 @@ import TodoFormContainer from './components/TodoFormContainer'
 
 function App() {
 
-  const [todoList,setTodoList] = useState([])
+  const [todoList,setTodoList] = useState([]);
+
+  useEffect(() => {
+    const data = localStorage.getItem('key');
+    const parsedData = JSON.parse(data);
+    let arr = [];
+    parsedData.forEach(input=>{
+      arr = [...arr,input];
+    })
+    setTodoList(arr);
+  },[]);
+
+  useEffect(()=>{
+    const data = todoList;
+    saveToLocalStorage(data);
+  },[todoList])
 
   // todoList의 isDone state를 변경
   const handleList = (data) => {
@@ -15,6 +30,12 @@ function App() {
     let myarr = [...todoList];
     myarr[found]=data;
     setTodoList(myarr);
+  }
+  
+  // todoList 삭제
+  const handleDelete = (id) => {
+    const newList = todoList.filter(element=>element.id!==id);
+    setTodoList(newList);
   }
 
   // form에서 입력받은대로 submit결과를 핸들링
@@ -29,10 +50,16 @@ function App() {
     }
   }
 
+  function saveToLocalStorage(data){
+    console.log(data);
+    localStorage.setItem('key',JSON.stringify(data));
+    //localStorage.setItem('key',data);
+  }
+
   return (
     <Container>
-      <ItemListContainer onToggle={handleList} name="대기중" todoList={todoList.filter(element=>element.isDone===false)}/>
-      <ItemListContainer onToggle={handleList} name="완료됨" todoList={todoList.filter(element=>element.isDone===true)}/>
+      <ItemListContainer onDeleteBtnPressed={handleDelete} onToggle={handleList} name="대기중" todoList={todoList.filter(element=>element.isDone===false)}/>
+      <ItemListContainer onDeleteBtnPressed={handleDelete} onToggle={handleList} name="완료됨" todoList={todoList.filter(element=>element.isDone===true)}/>
       <TodoFormContainer onSubmit={handleSubmit}/>
     </Container>
   );
