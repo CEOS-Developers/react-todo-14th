@@ -1,10 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-function TodoInput() {
+function TodoInput({ todoList, setTodoList }) {
+  const [todo, setTodo] = useState('');
+  const onHandleInputChange = (e) => {
+    setTodo(e.target.value);
+  };
+  const onAddButtonClick = () => {
+    const newTodo = {
+      id: Date.now(),
+      content: todo,
+      isDone: false,
+    };
+    todoList = todoList.concat(newTodo);
+    setTodoList(todoList);
+    setTodo('');
+  };
   return (
     <TodoInputBox>
-      <Input placeholder="새로운 할 일 추가" />
-      <TodoButton>+</TodoButton>
+      <Input
+        placeholder="새로운 할 일 추가"
+        onChange={onHandleInputChange}
+        value={todo}
+      />
+      <TodoButton onClick={onAddButtonClick}>+</TodoButton>
     </TodoInputBox>
   );
 }

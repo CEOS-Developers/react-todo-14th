@@ -1,11 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import TodoItem from './TodoItem';
-function TodoList() {
+function TodoList({ title, todoList }) {
   return (
     <Wrapper>
-      <Title>제목</Title>
-      <TodoItem></TodoItem>
+      <Title>{title}</Title>
+      {todoList && // todoList가 있을때만 출력
+        todoList.map((todoItem) => (
+          <TodoItem key={todoItem.id} todoItem={todoItem} />
+        ))}
     </Wrapper>
   );
 }

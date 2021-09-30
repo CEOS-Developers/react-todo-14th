@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import bin from '../img/bin.png';
-function TodoItem() {
+function TodoItem({ todoItem }) {
   return (
     <TodoItemWrapper>
-      <Todo>todo 내용</Todo>
+      <Todo>{todoItem.content}</Todo>
       <DeleteButton>
         <Img src={bin}></Img>
       </DeleteButton>
