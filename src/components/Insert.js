@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { AiTwotoneBulb } from "react-icons/ai";
+import { AiOutlinePlusCircle } from "react-icons/ai";
 
 const InsertBox = styled.div`
   display: flex;
@@ -31,7 +31,7 @@ const Insert = () => {
     <InsertBox>
       <Input placeholder="할 일을 입력하세요" />
       <Button type="submit">
-        <AiTwotoneBulb />
+        <AiOutlinePlusCircle />
       </Button>
     </InsertBox>
   );

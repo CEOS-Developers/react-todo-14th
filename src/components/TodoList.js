@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import TodoListItem from "./TodoListItem";
+
 const ListBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -8,7 +10,6 @@ const ListBox = styled.div`
   height: 9rem;
   overflow-y: scroll;
 `;
-const TodoListItem = styled.div``;
 
 const TodoList = () => {
   return (
