@@ -2,9 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import TodoItem from './TodoItem';
 function TodoList({ title, isDone, todoList, setTodoList }) {
+  const count = todoList.filter((todo) => todo.isDone === isDone).length;
   return (
     <Wrapper>
-      <Title>{title}</Title>
+      <Title>
+        {title} ({count})
+      </Title>
       {todoList &&
         todoList.map((todoItem) =>
           //대기중과 완료된 일을 구분
