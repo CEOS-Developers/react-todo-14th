@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import DoneListItem from "./DoneListItem";
 
 const ListBox = styled.div`
   display: flex;
@@ -8,7 +9,6 @@ const ListBox = styled.div`
   height: 9rem;
   overflow-y: scroll;
 `;
-const DoneListItem = styled.div``;
 
 const DoneList = () => {
   return (
