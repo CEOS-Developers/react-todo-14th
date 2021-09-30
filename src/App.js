@@ -36,7 +36,12 @@ const Form = ({input, setInput, todos, setTodos}) => {
     </form>
   )
 }
+
+
 const UnDoneList = ({todos, setTodos}) => {
+  const handleDelete = ({id})=>{
+    setTodos(todos.filter((todo)=> todo.id !==id));
+  }
  return (
    <div>
      {todos.map((todo) => (
@@ -44,7 +49,7 @@ const UnDoneList = ({todos, setTodos}) => {
          <input type='text' value={todo.title} className='list' onChange={(event)=>event.preventDefault()} />
          <div>
            <button className="delete-button">
-           <div className={'content'}>
+           <div className='list-button' onClick={() => handleDelete(todo)}>
              {<MdClear />}
              </div>
            </button>
