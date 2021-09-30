@@ -53,9 +53,7 @@ function App() {
   }
 
   function saveToLocalStorage(data){
-    console.log(data);
     localStorage.setItem('key',JSON.stringify(data));
-    //localStorage.setItem('key',data);
   }
 
   return (

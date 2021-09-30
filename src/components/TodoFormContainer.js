@@ -14,7 +14,6 @@ const TodoFormContainer = (props) => {
         onClick();
     }
     const onChange = e => {
-        console.log(e.target.value);
         const nextForm = e.target.value;
         setText(nextForm);
     }
