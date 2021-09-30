@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import TodoInput from './TodoInput';
 import TodoList from './TodoList';
 function TodoTemplate() {
+  //새로고침 해도 저장이 되게끔 localStorage에 저장
   const [todoList, setTodoList] = useState(() =>
     JSON.parse(window.localStorage.getItem('todo'))
   );
