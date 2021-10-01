@@ -12,9 +12,9 @@ const Remove = styled.button`
   background: none;
   border: none;
   font-size: 1rem;
-  opacity: 0;
+  color: gray;
   &:hover {
-    opacity: 1;
+    color: black;
   }
 `;
 
