@@ -17,16 +17,16 @@ function TodoItem({ todoList, todoItem, setTodoList }) {
     }));
     setTodoList(todoList);
   };
-  const onClickEditTodo = () => {
+  const onClickEditButton = () => {
     setEdit(!edit);
   };
   const onHandleInputChange = (e) => {
     setNewTodo(e.target.value);
   };
   const onHandleEditTodo = () => {
-    todoList = todoList.map((item) => ({
-      ...item,
-      content: item.id === todoItem.id ? newTodo : item.content,
+    todoList = todoList.map((todo) => ({
+      ...todo,
+      content: todo.id === todoItem.id ? newTodo : todo.content,
     }));
     if (newTodo) {
       setTodoList(todoList);
@@ -36,24 +36,22 @@ function TodoItem({ todoList, todoItem, setTodoList }) {
     <TodoItemWrapper>
       <TodoImg src={choonsik}></TodoImg>
       {edit ? (
-        <>
-          <Input value={newTodo} onChange={onHandleInputChange} />
-        </>
+        <Input value={newTodo} onChange={onHandleInputChange} />
       ) : (
         <Todo onClick={toggleTodo} isDone={todoItem.isDone}>
           {todoItem.content}
         </Todo>
       )}
       <div>
-        <EditButton onClick={onClickEditTodo}>
+        <EditButton onClick={onClickEditButton}>
           {edit ? (
             <EditButton onClick={onHandleEditTodo}>확인</EditButton>
           ) : (
-            <EditImg src={editImg} />
+            <Img src={editImg} />
           )}
         </EditButton>
         <DeleteButton onClick={deleteTodo}>
-          <DeleteImg src={bin}></DeleteImg>
+          <Img src={bin} />
         </DeleteButton>
       </div>
     </TodoItemWrapper>
@@ -91,15 +89,7 @@ const TodoImg = styled.img`
   width: 40px;
   height: 40px;
 `;
-const EditImg = styled.img`
-  width: 20px;
-  height: 20px;
-  opacity: 0;
-  &:hover {
-    opacity: 1;
-  }
-`;
-const DeleteImg = styled.img`
+const Img = styled.img`
   width: 20px;
   height: 20px;
   opacity: 0;
