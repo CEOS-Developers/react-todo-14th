@@ -1,7 +1,6 @@
 import React from 'react';
 
-const ItemListTitle = ({ title }) => {
-  let count = 0;
+const ItemListTitle = ({ title, count }) => {
   return (
     <h2>
       {title}({count})
