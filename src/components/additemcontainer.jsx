@@ -1,14 +1,17 @@
 import React, { useState, useRef } from 'react';
 
 const AddItemContainer = ({ itemList, addItem }) => {
-  const [text, setText] = useState([]);
   const formRef = useRef();
   const inputRef = useRef();
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (inputRef.current.value) {
-      addItem(inputRef.current.value);
+      addItem({
+        id: Date.now(),
+        content: `${inputRef.current.value}`,
+        state: 'todo',
+      });
       formRef.current.reset();
     }
   };

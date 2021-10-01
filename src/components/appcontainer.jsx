@@ -15,16 +15,24 @@ const StyledContainer = styled.section`
   background-color: var(--color-white);
 `;
 const AppContainer = (props) => {
-  const [itemList, setItemList] = useState(['a', 'b']);
+  const [itemList, setItemList] = useState([
+    { id: Date.now(), content: 'test', state: 'todo' },
+  ]);
   const addItem = (item) => {
     setItemList([...itemList, item]);
-    console.log('현재 itemList:', itemList);
+  };
+
+  const updateItemList = (newItemList) => {
+    setItemList([...newItemList]);
   };
 
   return (
     <StyledContainer>
       <>
-        <TodoItemContainer itemList={itemList} />
+        <TodoItemContainer
+          itemList={itemList}
+          updateItemList={updateItemList}
+        />
         <DoneItemContainer />
         <AddItemContainer itemList={itemList} addItem={addItem} />
       </>

@@ -5,11 +5,27 @@ const StyledLi = styled.li`
   display: flex;
   justify-content: space-between;
 `;
-const Item = ({ content }) => {
+const StyledButtonContainer = styled.button`
+  color: red;
+  background-color: yellow;
+  width: 100%;
+`;
+const Item = ({ content, state, updateItemList, itemList, id }) => {
+  const deleteItem = () => {
+    const newItemList = itemList.filter((element) => element.id !== id);
+    updateItemList([...newItemList]);
+  };
+
   return (
     <StyledLi>
-      <span>{content}</span>
-      <button>
+      <StyledButtonContainer onClick={() => {}}>
+        <span>{content}</span>
+      </StyledButtonContainer>
+      <button
+        onClick={() => {
+          deleteItem();
+        }}
+      >
         <i className="fas fa-trash"></i>
       </button>
     </StyledLi>

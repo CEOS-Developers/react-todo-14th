@@ -1,13 +1,22 @@
 import React from 'react';
 import Item from './item';
 
-const ItemList = ({ itemList }) => {
+const ItemList = ({ itemList, type, updateItemList }) => {
   return (
     <ul>
-      <Item content="test1"></Item>
-      <Item content="test2"></Item>
-      <Item content="test3"></Item>
-      {itemList && itemList.map((element) => <Item content={element}></Item>)}
+      {itemList &&
+        itemList.map(
+          (element) =>
+            element.state === type && (
+              <Item
+                id={element.id}
+                content={element.content}
+                state={type}
+                updateItemList={updateItemList}
+                itemList={itemList}
+              ></Item>
+            )
+        )}
     </ul>
   );
 };
