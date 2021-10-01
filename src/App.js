@@ -51,7 +51,7 @@ function App() {
       <Template>
         <Insert onInsert={onInsert} />
         <TodoList todos={todos} onRemove={onRemove} />
-        <DoneList />
+        <DoneList todos={todos} onRemove={onRemove} />
       </Template>
     </Wrapper>
   );
