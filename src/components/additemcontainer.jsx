@@ -50,6 +50,7 @@ const AddItemContainer = ({ addItem, updateItemList }) => {
   const formRef = useRef();
   const inputRef = useRef();
 
+  // form submit 이벤트 발생시 새로운 객체 추가, Ref초기화
   const handleSubmit = (event) => {
     event.preventDefault();
     if (inputRef.current.value) {
@@ -62,6 +63,7 @@ const AddItemContainer = ({ addItem, updateItemList }) => {
     }
   };
 
+  // itemList를 완전히 비움
   const resetItemList = () => {
     updateItemList([]);
   };

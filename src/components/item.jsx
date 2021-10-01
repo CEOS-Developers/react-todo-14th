@@ -27,6 +27,7 @@ const StyledDoneItem = styled.span`
 `;
 
 const Item = ({ content, state, updateItemList, itemList, id }) => {
+  // 현재 state를 입력받고, state를 갱신하여 업데이트
   const toggleState = (previousState) => {
     const nextState = previousState === 'todo' ? 'done' : 'todo';
     const newItemList = itemList.filter((element) => element.id !== id);
@@ -35,10 +36,14 @@ const Item = ({ content, state, updateItemList, itemList, id }) => {
       { id: Date.now(), content, state: nextState },
     ]);
   };
+
+  // filter를 통한 아이템 삭제
   const deleteItem = () => {
     const newItemList = itemList.filter((element) => element.id !== id);
     updateItemList([...newItemList]);
   };
+
+  // state에 따라 스타일링이 다르기 때문에, if문으로 조건부 리턴
   if (state == 'todo') {
     return (
       <StyledLi>

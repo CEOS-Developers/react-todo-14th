@@ -10,6 +10,8 @@ const ItemList = ({ itemList, type, updateItemList }) => {
   return (
     <StyledUl>
       <ul>
+        {/* itemList가 undefined면 에러
+        데이터가 없어도 리액트는 렌더링이 실행됨*/}
         {itemList &&
           itemList.map(
             (element) =>
