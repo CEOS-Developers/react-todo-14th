@@ -11,6 +11,15 @@ const StyledButtonContainer = styled.button`
   width: 100%;
 `;
 const Item = ({ content, state, updateItemList, itemList, id }) => {
+  const toggleState = (previousState) => {
+    const nextState = previousState === 'todo' ? 'done' : 'todo';
+    console.log(previousState, nextState);
+    const newItemList = itemList.filter((element) => element.id !== id);
+    updateItemList([
+      ...newItemList,
+      { id: Date.now(), content, state: nextState },
+    ]);
+  };
   const deleteItem = () => {
     const newItemList = itemList.filter((element) => element.id !== id);
     updateItemList([...newItemList]);
@@ -18,7 +27,11 @@ const Item = ({ content, state, updateItemList, itemList, id }) => {
 
   return (
     <StyledLi>
-      <StyledButtonContainer onClick={() => {}}>
+      <StyledButtonContainer
+        onClick={() => {
+          toggleState(state);
+        }}
+      >
         <span>{content}</span>
       </StyledButtonContainer>
       <button

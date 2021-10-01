@@ -33,7 +33,10 @@ const AppContainer = (props) => {
           itemList={itemList}
           updateItemList={updateItemList}
         />
-        <DoneItemContainer />
+        <DoneItemContainer
+          itemList={itemList}
+          updateItemList={updateItemList}
+        />
         <AddItemContainer itemList={itemList} addItem={addItem} />
       </>
     </StyledContainer>
