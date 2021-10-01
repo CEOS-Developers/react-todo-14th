@@ -6,16 +6,23 @@ import{v4 as UuidV4} from "uuid";
 const App = () => {
   const [input, setInput] = useState("");
   const [todos, setTodos] = useState([]);
+  const [dones, setDones] = useState([]);
 
   return <div className='Background'>
-  <div className='do-list'>아직 완료 안된 일 ()</div>
+  <div className='do-list'>아직 완료 안된 일 ({todos.length})</div>
+  <div className='box-list'>
   <UnDoneList  todos={todos} setTodos = {setTodos}/>
-  <div className='do-list'>완료된 일 (0) </div>
+  </div>
+  <div className='do-list'>완료된 일 ({dones.length}) </div>
+  <div className='box-list'>
+
+  </div>
   <Form 
   input = {input}
   setInput = {setInput}
   todos = {todos}
   setTodos = {setTodos}
+
   />
   </div>
 }
@@ -31,39 +38,46 @@ const Form = ({input, setInput, todos, setTodos}) => {
   }
   return (
     <form onSubmit={onFormSubmit}>
-      <input type = 'text' placeholder='enter a todo...' className='task-input' value={input} required onChange={onInputChange}  />
+      <input type = 'text' placeholder='내용 입력하기...' className='task-input' value={input} required onChange={onInputChange}  />
       <button className='button-add' type='submit'>{<MdAddCircle />}</button>
     </form>
   )
 }
 
-
 const UnDoneList = ({todos, setTodos}) => {
   const handleDelete = ({id})=>{
+    setTodos(todos.filter((todo)=> todo.id !==id));
+  }
+  const handleComplete = ({id})=>{
     setTodos(todos.filter((todo)=> todo.id !==id));
   }
  return (
    <div>
      {todos.map((todo) => (
-       <li className="todo-list" key={todo.id}>
-         <input type='text' value={todo.title} className='list' onChange={(event)=>event.preventDefault()} />
-         <div>
-           <button className="delete-button">
-           <div className='list-button' onClick={() => handleDelete(todo)}>
-             {<MdClear />}
-             </div>
-           </button>
-           <button className="check-button">
-           <div className={'content'}>
-             {<MdCheckCircle />}
-             </div>
-           </button>
-         </div>
+       <li className="todo-list" key={todo.id} completed={todo.completed}>
+         { todo.completed ===false ?
+           <div>
+           <input type='text' value={todo.title} className='list' onChange={(event)=>event.preventDefault()} />
+             <button className="delete-button">
+             <div className='list-button' onClick={() => handleDelete(todo)}>
+               {<MdClear />}
+               </div>
+             </button>
+             <button className="check-button">
+             <div className='list-button' onClick={()=> handleComplete(todo)}>
+               {<MdCheckCircle />}
+               </div>
+             </button>
+           </div> :null
+     }
        </li>
      ))}
    </div>
  )
 }
+
+
+
 
 
 
