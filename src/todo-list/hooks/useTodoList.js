@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import useWaitingTodos from '../atoms/waitingTodos.atom';
 import useFinishedTodos from '../atoms/finishedTodos.atom'
+import { waitingTodosListAtom } from '../atoms/waitingTodos.atom';
+import { finishedTodosListAtom } from '../atoms/finishedTodos.atom'
 
 function useTodoList () {
 
-    const [waitingTodos, setWaitingTodos] = useWaitingTodos();
-    const [finishedTodos, setFinishedTodos] = useFinishedTodos();
+    const [waitingTodos, setWaitingTodos] = useWaitingTodos(waitingTodosListAtom);
+    const [finishedTodos, setFinishedTodos] = useFinishedTodos(finishedTodosListAtom);
 
     useEffect(() => {
         // console.log('==================================')

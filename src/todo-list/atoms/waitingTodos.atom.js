@@ -31,9 +31,9 @@ class waitingTodosAtom {
     }
 }
 
-const Atom = new waitingTodosAtom();
+export const waitingTodosListAtom = new waitingTodosAtom();
 
-function useWaitingTodos() {
+function useWaitingTodos(Atom) {
 
     const [waitingTodos, setWaitingTodos] = useState(Atom.state);
 

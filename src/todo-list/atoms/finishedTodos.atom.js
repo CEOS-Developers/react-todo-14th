@@ -25,9 +25,9 @@ class finishedTodosAtom {
     }
 }
 
-const Atom = new finishedTodosAtom();
+export const finishedTodosListAtom = new finishedTodosAtom();
 
-function useFinishedTodos() {
+function useFinishedTodos(Atom) {
     const [finishedTodos, setFinishedTodos] = useState(Atom.state);
 
     useEffect(() => {
