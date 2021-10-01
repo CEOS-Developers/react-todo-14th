@@ -3,7 +3,7 @@ import ItemList from './itemlist';
 import ItemListTitle from './itemlisttitle';
 
 const DoneItemContainer = ({ itemList, updateItemList }) => {
-  const doneCount = itemList.filter((item) => item.state == 'done').length;
+  const doneCount = itemList.filter((item) => item.state === 'done').length;
   return (
     <>
       <ItemListTitle title="😆완료된 할 일" count={doneCount}></ItemListTitle>

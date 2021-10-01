@@ -1,6 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 
-const AddItemContainer = ({ itemList, addItem }) => {
+const AddItemContainer = ({ itemList, addItem, updateItemList }) => {
   const formRef = useRef();
   const inputRef = useRef();
 
@@ -16,10 +16,17 @@ const AddItemContainer = ({ itemList, addItem }) => {
     }
   };
 
+  const resetItemList = () => {
+    updateItemList([]);
+  };
+
   return (
     <form ref={formRef} onSubmit={handleSubmit}>
       <input ref={inputRef} type="text" />
-      <button type="text">+</button>
+      <button type="submit">+</button>
+      <button type="button" onClick={resetItemList}>
+        <i classNmae="fas fa-sync-alt"></i>
+      </button>
     </form>
   );
 };

@@ -3,7 +3,7 @@ import ItemList from './itemlist';
 import ItemListTitle from './itemlisttitle';
 
 const TodoItemContainer = ({ itemList, updateItemList }) => {
-  const todoCount = itemList.filter((item) => item.state == 'todo').length;
+  const todoCount = itemList.filter((item) => item.state === 'todo').length;
 
   return (
     <>
