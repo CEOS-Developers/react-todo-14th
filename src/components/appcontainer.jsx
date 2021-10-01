@@ -14,10 +14,32 @@ const StyledContainer = styled.section`
   border-radius: var(--size-border-radius);
   background-color: var(--color-white);
 `;
+
+const StyledTodoItemContainer = styled.div`
+  background-color: var(--color-waiting);
+  height: 275px;
+  position: relative;
+  border-top-left-radius: var(--size-border-radius);
+  border-top-right-radius: var(--size-border-radius);
+`;
+
+const StyledDoneItemContainer = styled.div`
+  background-color: var(--color-done);
+  height: 275px;
+`;
+
+const StyledAddItemContainer = styled.div`
+  background-color: var(--color-add);
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom-left-radius: var(--size-border-radius);
+  border-bottom-right-radius: var(--size-border-radius);
+`;
+
 const AppContainer = (props) => {
-  const [itemList, setItemList] = useState([
-    { id: Date.now(), content: 'test', state: 'todo' },
-  ]);
+  const [itemList, setItemList] = useState([]);
   const addItem = (item) => {
     setItemList([...itemList, item]);
   };
@@ -29,19 +51,25 @@ const AppContainer = (props) => {
   return (
     <StyledContainer>
       <>
-        <TodoItemContainer
-          itemList={itemList}
-          updateItemList={updateItemList}
-        />
-        <DoneItemContainer
-          itemList={itemList}
-          updateItemList={updateItemList}
-        />
-        <AddItemContainer
-          itemList={itemList}
-          addItem={addItem}
-          updateItemList={updateItemList}
-        />
+        <StyledTodoItemContainer>
+          <TodoItemContainer
+            itemList={itemList}
+            updateItemList={updateItemList}
+          />
+        </StyledTodoItemContainer>
+        <StyledDoneItemContainer>
+          <DoneItemContainer
+            itemList={itemList}
+            updateItemList={updateItemList}
+          />
+        </StyledDoneItemContainer>
+        <StyledAddItemContainer>
+          <AddItemContainer
+            itemList={itemList}
+            addItem={addItem}
+            updateItemList={updateItemList}
+          />
+        </StyledAddItemContainer>
       </>
     </StyledContainer>
   );

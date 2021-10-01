@@ -8,9 +8,12 @@ const GlobalStyle = createGlobalStyle`
   --color-dark-orange: #ac5300;
   --color-white: #ffffff;
   --color-pink: #fdc7ff;
+  --color-red:#ff756b;
+  --color-green:#0cab41;
   --color-waiting: #fff5bf;
   --color-done: #fff1a0;
   --color-add: #fff5bf;
+  --color-light-black: #666666;
 
   /* Font size */
   --font-medium: 18px;
@@ -18,6 +21,8 @@ const GlobalStyle = createGlobalStyle`
 
   /* Size */
   --size-border-radius: 15px;
+  --size-item-padding: 25px;
+  --size-itemListTitle-padding: 15px;
 }
 
 /* Universal tags */
