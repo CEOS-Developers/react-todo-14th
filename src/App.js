@@ -22,9 +22,12 @@ function App() {
   const [todos, setTodos] = useState([
     { id: 1, text: "일정1", checked: false },
     { id: 2, text: "일정2", checked: false },
+    { id: 3, text: "일정3", checked: true },
   ]);
 
-  const nextId = useRef(3);
+  //const [dones, setDones] = useState([]);
+
+  const nextId = useRef(4);
 
   const onInsert = useCallback(
     (text) => {

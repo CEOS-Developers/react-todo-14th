@@ -16,9 +16,9 @@ const DoneList = ({ todos, onRemove }) => {
     <div>
       <h2>DONE ({doneCount.length})</h2>
       <ListBox>
-        <DoneListItem />
-        <DoneListItem />
-        <DoneListItem />
+        {doneCount.map((todo) => (
+          <DoneListItem todo={todo} key={todo.id} onRemove={onRemove} />
+        ))}
       </ListBox>
     </div>
   );

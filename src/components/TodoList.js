@@ -17,7 +17,7 @@ const TodoList = ({ todos, onRemove }) => {
     <div>
       <h2>TO DO ({todoCount.length})</h2>
       <ListBox>
-        {todos.map((todo) => (
+        {todoCount.map((todo) => (
           <TodoListItem todo={todo} key={todo.id} onRemove={onRemove} />
         ))}
       </ListBox>
