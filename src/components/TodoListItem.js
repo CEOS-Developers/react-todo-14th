@@ -20,10 +20,11 @@ const Remove = styled.button`
   }
 `;
 
-const TodoListItem = () => {
+const TodoListItem = ({ todo }) => {
+  const { text, checked } = todo;
   return (
     <ListItem>
-      <Text>안녕</Text>
+      <Text>{text}</Text>
       <Remove>
         <AiOutlineMinusCircle />
       </Remove>

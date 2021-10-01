@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 
-const InsertBox = styled.div`
+const InsertBox = styled.form`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -26,10 +26,29 @@ const Button = styled.button`
   }
 `;
 
-const Insert = () => {
+const Insert = ({ onInsert }) => {
+  const [value, setValue] = useState("");
+  const onChange = useCallback((e) => {
+    setValue(e.target.value);
+    console.log(value);
+  }, []);
+
+  const onSubmit = useCallback(
+    (e) => {
+      onInsert(value);
+      setValue("");
+      e.preventDefault();
+    },
+    [onInsert, value]
+  );
+
   return (
-    <InsertBox>
-      <Input placeholder="할 일을 입력하세요" />
+    <InsertBox onSubmit={onSubmit}>
+      <Input
+        placeholder="할 일을 입력하세요"
+        value={value}
+        onChange={onChange}
+      />
       <Button type="submit">
         <AiOutlinePlusCircle />
       </Button>

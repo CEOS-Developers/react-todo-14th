@@ -11,14 +11,14 @@ const ListBox = styled.div`
   overflow-y: scroll;
 `;
 
-const TodoList = () => {
+const TodoList = ({ todos }) => {
   return (
     <div>
       <h2>TO DO (0)</h2>
       <ListBox>
-        <TodoListItem />
-        <TodoListItem />
-        <TodoListItem />
+        {todos.map((todo) => (
+          <TodoListItem todo={todo} key={todo.id} />
+        ))}
       </ListBox>
     </div>
   );
