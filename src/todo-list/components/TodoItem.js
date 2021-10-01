@@ -1,13 +1,30 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components';
+import useTodoList from '../hooks/useTodoList';
 
-function TodoItem ({id, todoContent, waiting}) {
+function TodoItem ({...props}) {
 
+    const { deleteTodo, changeTodoStatus } = useTodoList();
+    const id = props.todo.id;
+    const todoContent = props.todo.todoContent;
+    const waiting = props.todo.waiting;
+
+    const onDeleteBtnClick = () => {
+        deleteTodo({id: id, waiting: waiting});
+    }
+
+    const onClickTodoItem = (event) => {
+        if (event.target.localName === 'button') {
+            onDeleteBtnClick();
+            return;
+        }
+        changeTodoStatus({id: id, todoContent: todoContent, waiting: waiting})
+    }
 
     return (
-        <StyledLi>
+        <StyledLi onClick={onClickTodoItem} key={id}>
             {todoContent}
-            <StyledBtn></StyledBtn>
+            <StyledBtn onClick={onDeleteBtnClick}></StyledBtn>
         </StyledLi>
     )
 }
@@ -25,10 +42,10 @@ const StyledBtn = styled.button`
   height: 1.1rem;
   width: 1.1rem;
     
-  background: center url(img/bin.png);
+  background: center url(../../../assets/img/bin.png);
   background-size: cover;
 
-  visibility: hidden;
+  /* visibility: hidden; */
 `
 
 export default TodoItem
