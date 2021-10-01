@@ -15,7 +15,7 @@ const App = () => {
   </div>
   <div className='do-list'>완료된 일 ({dones.length}) </div>
   <div className='box-list'>
-
+  <DoneList  dones={dones} setDones = {setDones}/>
   </div>
   <Form 
   input = {input}
@@ -44,12 +44,13 @@ const Form = ({input, setInput, todos, setTodos}) => {
   )
 }
 
-const UnDoneList = ({todos, setTodos}) => {
+const UnDoneList = ({todos, setTodos, dones, setDones}) => {
   const handleDelete = ({id})=>{
     setTodos(todos.filter((todo)=> todo.id !==id));
   }
   const handleComplete = ({id})=>{
     setTodos(todos.filter((todo)=> todo.id !==id));
+    setDones(dones.filter((done)=> done.id ===id));
   }
  return (
    <div>
@@ -76,6 +77,34 @@ const UnDoneList = ({todos, setTodos}) => {
  )
 }
 
+const DoneList = ({dones, setDones}) => {
+  const handleDelete = ({id})=>{
+    setDones(dones.filter((todo)=> todo.id !==id));
+  } 
+ return (
+   <div>
+     {dones.map((todo) => (
+       
+       <li className="todo-list" key={todo.id} completed={todo.completed}>
+         { todo.completed ===false ?
+         <div>
+         <input type='text' value={todo.title} className='list' onChange={(event)=>event.preventDefault()} />
+           <button className="delete-button">
+           <div className='list-button' onClick={() => handleDelete(todo)}>
+             {<MdClear />}
+             </div>
+           </button>
+           <button className="check-button">
+           <div className='list-button' onClick={()=> handleDelete(todo)}>
+             {<MdCheckCircle />}
+             </div>
+           </button>
+         </div>:null}
+       </li>
+     ))}
+   </div>
+ )
+}
 
 
 
