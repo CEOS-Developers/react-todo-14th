@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import './App.css';
 
-import Container from './components/Container';
+import Container from './components/container';
 import ItemListContainer from './components/ItemListContainer';
 import TodoFormContainer from './components/TodoFormContainer'
 
