@@ -1,9 +1,18 @@
-import React from 'react';
-import todoListAtom from '../atoms/todoList.atom';
+import React, {useEffect, useState} from 'react';
+import useWaitingTodos from '../atoms/waitingTodos.atom';
+import useFinishedTodos from '../atoms/finishedTodos.atom'
 
 function useTodoList () {
 
-    const { waitingTodos, finishedTodos, setWaitingTodos, setFinishedTodos } = todoListAtom();
+    const [waitingTodos, setWaitingTodos] = useWaitingTodos();
+    const [finishedTodos, setFinishedTodos] = useFinishedTodos();
+
+    useEffect(() => {
+        // console.log('==================================')
+        // console.log('waitingTodos: ', waitingTodos);
+        // console.log('finishedTodos: ', finishedTodos);
+        // console.log('==================================')
+      }, [waitingTodos, finishedTodos])
 
     const createTodo = (todoContent) => {
         setWaitingTodos([
@@ -12,21 +21,21 @@ function useTodoList () {
                 todoContent: todoContent,
                 waiting: true,
             },
-            ...finishedTodos,
+            ...waitingTodos,
         ]);
     }
 
-    const deleteWaitingTodo = (id) => {
-        setWaitingTodos(waitingTodos.filter(todo => todo.todoID !== id));
-    }
-
-    const deleteFinishedTodo = (id) => {
-        setFinishedTodos(finishedTodos.filter(todo => todo.todoID !== id));
+    const deleteTodo = ({id, waiting}) => {
+        if (waiting) {
+            setWaitingTodos([...waitingTodos.filter(todo => todo.todoID !== id)]);
+        } else {
+            setFinishedTodos([...finishedTodos.filter(todo => todo.todoID !== id)]);
+        }
     }
 
     const changeTodoStatus = ({id, todoContent, waiting}) => {
         if (waiting) {
-            setWaitingTodos(waitingTodos.filter(todo => todo.todoID !== id));
+            setWaitingTodos([...waitingTodos.filter(todo => todo.todoID !== id)]);
             setFinishedTodos([
                 {
                     todoID: id,
@@ -36,7 +45,7 @@ function useTodoList () {
                 ...finishedTodos
             ])
         } else {
-            setFinishedTodos(finishedTodos.filter(todo => todo.todoID !== id));
+            setFinishedTodos([...finishedTodos.filter(todo => todo.todoID !== id)]);
             setWaitingTodos([
                 {
                     todoID: id,
@@ -48,7 +57,7 @@ function useTodoList () {
         }
     } 
     
-    return { waitingTodos, finishedTodos, createTodo, deleteWaitingTodo, deleteFinishedTodo, changeTodoStatus }
+    return { waitingTodos, finishedTodos, createTodo, deleteTodo, changeTodoStatus }
 }
 
 export default useTodoList
