@@ -13,6 +13,7 @@ const Input = styled.input`
   border: none;
   height: 2rem;
   width: 18rem;
+  padding-left: 1rem;
 `;
 const Button = styled.button`
   display: flex;

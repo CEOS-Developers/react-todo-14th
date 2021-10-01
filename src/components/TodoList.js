@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import TodoListItem from "./TodoListItem";
@@ -11,13 +11,19 @@ const ListBox = styled.div`
   overflow-y: scroll;
 `;
 
-const TodoList = ({ todos, onRemove }) => {
+const TodoList = ({ todos, onRemove, onToggle }) => {
+  const todoCount = todos.filter((todo) => todo.checked === false);
   return (
     <div>
-      <h2>TO DO (0)</h2>
+      <h2>TO DO ({todoCount.length})</h2>
       <ListBox>
-        {todos.map((todo) => (
-          <TodoListItem todo={todo} key={todo.id} onRemove={onRemove} />
+        {todoCount.map((todo) => (
+          <TodoListItem
+            todo={todo}
+            key={todo.id}
+            onRemove={onRemove}
+            onToggle={onToggle}
+          />
         ))}
       </ListBox>
     </div>

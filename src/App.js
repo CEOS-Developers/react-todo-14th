@@ -20,11 +20,12 @@ const Wrapper = styled.div`
 
 function App() {
   const [todos, setTodos] = useState([
-    { id: 1, text: "일정1", checked: false },
-    { id: 2, text: "일정2", checked: false },
+    // { id: 1, text: "일정1", checked: false },
+    // { id: 2, text: "일정2", checked: false },
+    // { id: 3, text: "일정3", checked: true },
   ]);
 
-  const nextId = useRef(3);
+  const nextId = useRef(4);
 
   const onInsert = useCallback(
     (text) => {
@@ -46,12 +47,23 @@ function App() {
     [todos]
   );
 
+  const onToggle = useCallback(
+    (id) => {
+      setTodos(
+        todos.map((todo) =>
+          todo.id === id ? { ...todo, checked: !todo.checked } : todo
+        )
+      );
+    },
+    [todos]
+  );
+
   return (
     <Wrapper>
       <Template>
         <Insert onInsert={onInsert} />
-        <TodoList todos={todos} onRemove={onRemove} />
-        <DoneList />
+        <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle} />
+        <DoneList todos={todos} onRemove={onRemove} onToggle={onToggle} />
       </Template>
     </Wrapper>
   );

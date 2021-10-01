@@ -18,7 +18,7 @@ function Template({ children }) {
   return (
     <Container>
       <header>
-        <h2>오늘 할 일</h2>
+        <h2>📚오늘 할 일📚</h2>
       </header>
       <Content>{children}</Content>
     </Container>
