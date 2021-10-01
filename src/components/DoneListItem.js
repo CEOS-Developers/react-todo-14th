@@ -22,7 +22,16 @@ const DoneListItem = ({ todo, onRemove, onToggle }) => {
   const { id, text, checked } = todo;
   return (
     <ListItem>
-      <Text onClick={() => onToggle(id)}>{text}</Text>
+      {checked ? (
+        <Text
+          style={{ textDecoration: "line-through", color: "grey" }}
+          onClick={() => onToggle(id)}
+        >
+          {text}
+        </Text>
+      ) : (
+        <Text onClick={() => onToggle(id)}>{text}</Text>
+      )}
       <Remove onClick={() => onRemove(id)}>
         <AiOutlineMinusCircle />
       </Remove>
