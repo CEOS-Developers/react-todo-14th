@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import {
     ListHeader,
     ListContainer,
@@ -26,8 +26,8 @@ const TodoList = (props) => {
         return item.map((element,index)=>{
             return(
                 <List key={index}>
-                    <li onClick={()=>handleToggle(element)}>{element.text}</li>
-                    <DeleteBtn onClick={()=>handleDelete(element)}><img src="/img/bin.png" width="20px" alt="bin"></img></DeleteBtn>
+                    <span onClick={()=>handleToggle(element)}>{element.text}</span>
+                    <DeleteBtn className="delete-button" onClick={()=>handleDelete(element)}><img src="/img/bin.png" width="20px" alt="bin"></img></DeleteBtn>
                 </List>
             )
         })

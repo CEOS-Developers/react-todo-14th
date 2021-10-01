@@ -22,3 +22,7 @@ ul,
 p {
   all: unset;
 }
+
+span {
+  flex-grow: 1;
+}
