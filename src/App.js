@@ -4,6 +4,7 @@ import {MdClear, MdAddCircle, MdCheckCircle} from 'react-icons/md'
 import{v4 as UuidV4} from "uuid";
 
 const App = () => {
+  /* 로컬 스토리지 저장 */
   const initState = JSON.parse(localStorage.getItem("todos")) || [];
   const [input, setInput] = useState("");
   const [todos, setTodos] = useState(initState);
@@ -13,10 +14,11 @@ const App = () => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
+/* todo length를 통해 아이템 카운트*/
   return <div className='Background'>
   <div className='do-list'>아직 완료 안된 일 ({todos.length})</div>
   <div className='box-list'>
-  <UnDoneList className='un-done'  todos={todos} setTodos = {setTodos}/>
+  <UnDoneList todos={todos} setTodos = {setTodos}/>
   </div>
   <div className='do-list'>완료된 일 ({dones.length}) </div>
   <div className='box-list'>
@@ -32,6 +34,7 @@ const App = () => {
   </div>
 }
 
+/* 할일 입력 폼 구성*/
 const Form = ({input, setInput, todos, setTodos}) => {
   const onInputChange = (event) =>{
     setInput(event.target.value);
@@ -48,7 +51,7 @@ const Form = ({input, setInput, todos, setTodos}) => {
     </form>
   )
 }
-
+/* 완료 안된 일의 리스트 구성 */
 const UnDoneList = ({todos, setTodos, dones, setDones}) => {
   const handleDelete = ({id})=>{
     setTodos(todos.filter((todo)=> todo.id !==id));
@@ -80,6 +83,7 @@ const UnDoneList = ({todos, setTodos, dones, setDones}) => {
  )
 }
 
+/*완료된 일의 리스트 구성*/
 const DoneList = ({dones, setDones}) => {
   const handleDelete = ({id})=>{
     setDones(dones.filter((todo)=> todo.id !==id));
