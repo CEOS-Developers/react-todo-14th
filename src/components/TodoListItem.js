@@ -19,7 +19,7 @@ const Remove = styled.button`
 `;
 
 const TodoListItem = ({ todo, onRemove, onToggle }) => {
-  const { id, text, checked } = todo;
+  const { id, text } = todo;
   return (
     <ListItem>
       <Text onClick={() => onToggle(id)}>{text}</Text>
