@@ -12,13 +12,7 @@ function App() {
   const [todoList,setTodoList] = useState([]);
 
   useEffect(() => {
-    const data = localStorage.getItem('key');
-    const parsedData = JSON.parse(data);
-    let arr = [];
-    parsedData.forEach(input=>{
-      arr = [...arr,input];
-    })
-    setTodoList(arr);
+    loadDataFromLocalStorage()
   },[]);
 
   useEffect(()=>{
@@ -56,6 +50,17 @@ function App() {
     localStorage.setItem('key',JSON.stringify(data));
   }
 
+  function loadDataFromLocalStorage(){
+    const data = localStorage.getItem('key');
+    if(data !==null){
+      const parsedData = JSON.parse(data);
+      let arr = [];
+      parsedData.forEach(input=>{
+        arr = [...arr,input];
+      })
+      setTodoList(arr);
+    }
+  }
   return (
     <Container>
       <ItemListContainer onDeleteBtnPressed={handleDelete} onToggle={handleList} name="대기중" todoList={todoList.filter(element=>element.isDone===false)}/>
