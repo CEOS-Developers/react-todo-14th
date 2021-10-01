@@ -9,7 +9,9 @@ function TodoTemplate() {
     JSON.parse(window.localStorage.getItem('todo'))
   );
   useEffect(() => {
-    window.localStorage.setItem('todo', JSON.stringify(todoList));
+    todoList === null
+      ? setTodoList([])
+      : window.localStorage.setItem('todo', JSON.stringify(todoList));
   }, [todoList]);
 
   return (
