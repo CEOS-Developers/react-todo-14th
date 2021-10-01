@@ -22,10 +22,9 @@ function App() {
   const [todos, setTodos] = useState([
     { id: 1, text: "일정1", checked: false },
     { id: 2, text: "일정2", checked: false },
-    { id: 3, text: "일정3", checked: false },
   ]);
 
-  const nextId = useRef(4);
+  const nextId = useRef(3);
 
   const onInsert = useCallback(
     (text) => {
@@ -40,11 +39,18 @@ function App() {
     [todos]
   );
 
+  const onRemove = useCallback(
+    (id) => {
+      setTodos(todos.filter((todo) => todo.id !== id));
+    },
+    [todos]
+  );
+
   return (
     <Wrapper>
       <Template>
         <Insert onInsert={onInsert} />
-        <TodoList todos={todos} />
+        <TodoList todos={todos} onRemove={onRemove} />
         <DoneList />
       </Template>
     </Wrapper>
