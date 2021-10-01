@@ -1,12 +1,17 @@
 import './App.css';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {MdClear, MdAddCircle, MdCheckCircle} from 'react-icons/md'
 import{v4 as UuidV4} from "uuid";
 
 const App = () => {
+  const initState = JSON.parse(localStorage.getItem("todos")) || [];
   const [input, setInput] = useState("");
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(initState);
   const [dones, setDones] = useState([]);
+
+  useEffect(()=>{
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   return <div className='Background'>
   <div className='do-list'>아직 완료 안된 일 ({todos.length})</div>
@@ -56,7 +61,6 @@ const UnDoneList = ({todos, setTodos, dones, setDones}) => {
    <div>
      {todos.map((todo) => (
        <li className="todo-list" key={todo.id} completed={todo.completed}>
-         { todo.completed ===false ?
            <div>
            <input type='text' value={todo.title} className='list' onChange={(event)=>event.preventDefault()} />
              <button className="delete-button">
@@ -69,8 +73,7 @@ const UnDoneList = ({todos, setTodos, dones, setDones}) => {
                {<MdCheckCircle />}
                </div>
              </button>
-           </div> :null
-     }
+           </div>
        </li>
      ))}
    </div>
@@ -86,7 +89,6 @@ const DoneList = ({dones, setDones}) => {
      {dones.map((todo) => (
        
        <li className="todo-list" key={todo.id} completed={todo.completed}>
-         { todo.completed ===false ?
          <div>
          <input type='text' value={todo.title} className='list' onChange={(event)=>event.preventDefault()} />
            <button className="delete-button">
@@ -99,7 +101,7 @@ const DoneList = ({dones, setDones}) => {
              {<MdCheckCircle />}
              </div>
            </button>
-         </div>:null}
+         </div>
        </li>
      ))}
    </div>
