@@ -1,20 +1,42 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components';
+import useTodoList from '../hooks/useTodoList';
+import TodoItem from './TodoItem';
 
-const FinishedList = () => {
+function FinishedList() {
 
+    const { finishedTodos } = useTodoList();
+
+    useEffect(() => {
+      console.log('==================================')
+      console.log(' ')
+      console.log(' ')
+      console.log(' ')
+        console.log('finished: ', finishedTodos);
+        console.log(' ')
+        console.log(' ')
+        console.log(' ')
+        console.log('==================================')
+    }, [finishedTodos])
+
+    const renderFinishedTodos = () => {
+      return (
+          <StyledUl>
+            {finishedTodos.map(todo => 
+            <TodoItem todo={{id: todo.todoID, todoContent: todo.todoContent, waiting: todo.waiting}}  />)}
+          </StyledUl>
+      )
+    }
 
     return (
         <>
             <StyledTitleContainer>
                 <StyledP>완료</StyledP>
-                <StyledP></StyledP>
+                <StyledP>{finishedTodos.length}</StyledP>
             </StyledTitleContainer>
             
             <StyledSection>
-                <StyledUl>
-
-                </StyledUl>
+              {renderFinishedTodos()}
             </StyledSection>
         </>
     )
@@ -27,6 +49,7 @@ const StyledTitleContainer = styled.div`
 
 const StyledP = styled.p`
   all: unset;
+  padding: 0.3rem;
 
   font-weight: bold;
   font-size: 1rem;
