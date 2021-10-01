@@ -16,7 +16,7 @@ const App = () => {
   return <div className='Background'>
   <div className='do-list'>아직 완료 안된 일 ({todos.length})</div>
   <div className='box-list'>
-  <UnDoneList  todos={todos} setTodos = {setTodos}/>
+  <UnDoneList className='un-done'  todos={todos} setTodos = {setTodos}/>
   </div>
   <div className='do-list'>완료된 일 ({dones.length}) </div>
   <div className='box-list'>
@@ -107,9 +107,6 @@ const DoneList = ({dones, setDones}) => {
    </div>
  )
 }
-
-
-
 
 
 
