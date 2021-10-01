@@ -83,4 +83,4 @@ const AddItemContainer = ({ addItem, updateItemList }) => {
   );
 };
 
-export default AddItemContainer;
+export default React.memo(AddItemContainer);

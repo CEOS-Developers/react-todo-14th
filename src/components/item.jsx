@@ -85,4 +85,4 @@ const Item = ({ content, state, updateItemList, itemList, id }) => {
   }
 };
 
-export default Item;
+export default React.memo(Item);

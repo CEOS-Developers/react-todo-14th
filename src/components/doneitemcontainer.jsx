@@ -16,4 +16,4 @@ const DoneItemContainer = ({ itemList, updateItemList }) => {
   );
 };
 
-export default DoneItemContainer;
+export default React.memo(DoneItemContainer);

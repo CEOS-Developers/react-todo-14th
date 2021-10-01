@@ -17,4 +17,4 @@ const TodoItemContainer = ({ itemList, updateItemList }) => {
   );
 };
 
-export default TodoItemContainer;
+export default React.memo(TodoItemContainer);

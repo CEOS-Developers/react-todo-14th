@@ -31,4 +31,4 @@ const ItemList = ({ itemList, type, updateItemList }) => {
   );
 };
 
-export default ItemList;
+export default React.memo(ItemList);

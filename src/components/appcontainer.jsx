@@ -79,4 +79,4 @@ const AppContainer = (props) => {
   );
 };
 
-export default AppContainer;
+export default React.memo(AppContainer);

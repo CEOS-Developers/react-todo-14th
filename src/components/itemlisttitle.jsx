@@ -15,4 +15,4 @@ const ItemListTitle = ({ title, count }) => {
   );
 };
 
-export default ItemListTitle;
+export default React.memo(ItemListTitle);
