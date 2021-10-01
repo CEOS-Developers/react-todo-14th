@@ -20,12 +20,12 @@ const Remove = styled.button`
   }
 `;
 
-const TodoListItem = ({ todo }) => {
-  const { text, checked } = todo;
+const TodoListItem = ({ todo, onRemove }) => {
+  const { id, text, checked } = todo;
   return (
     <ListItem>
       <Text>{text}</Text>
-      <Remove>
+      <Remove onClick={() => onRemove(id)}>
         <AiOutlineMinusCircle />
       </Remove>
     </ListItem>

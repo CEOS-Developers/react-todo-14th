@@ -30,7 +30,6 @@ const Insert = ({ onInsert }) => {
   const [value, setValue] = useState("");
   const onChange = useCallback((e) => {
     setValue(e.target.value);
-    console.log(value);
   }, []);
 
   const onSubmit = useCallback(
