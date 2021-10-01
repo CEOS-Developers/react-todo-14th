@@ -11,14 +11,19 @@ const ListBox = styled.div`
   overflow-y: scroll;
 `;
 
-const TodoList = ({ todos, onRemove }) => {
+const TodoList = ({ todos, onRemove, onToggle }) => {
   const todoCount = todos.filter((todo) => todo.checked === false);
   return (
     <div>
       <h2>TO DO ({todoCount.length})</h2>
       <ListBox>
         {todoCount.map((todo) => (
-          <TodoListItem todo={todo} key={todo.id} onRemove={onRemove} />
+          <TodoListItem
+            todo={todo}
+            key={todo.id}
+            onRemove={onRemove}
+            onToggle={onToggle}
+          />
         ))}
       </ListBox>
     </div>

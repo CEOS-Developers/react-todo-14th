@@ -25,8 +25,6 @@ function App() {
     { id: 3, text: "일정3", checked: true },
   ]);
 
-  //const [dones, setDones] = useState([]);
-
   const nextId = useRef(4);
 
   const onInsert = useCallback(
@@ -49,12 +47,23 @@ function App() {
     [todos]
   );
 
+  const onToggle = useCallback(
+    (id) => {
+      setTodos(
+        todos.map((todo) =>
+          todo.id === id ? { ...todo, checked: !todo.checked } : todo
+        )
+      );
+    },
+    [todos]
+  );
+
   return (
     <Wrapper>
       <Template>
         <Insert onInsert={onInsert} />
-        <TodoList todos={todos} onRemove={onRemove} />
-        <DoneList todos={todos} onRemove={onRemove} />
+        <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle} />
+        <DoneList todos={todos} onRemove={onRemove} onToggle={onToggle} />
       </Template>
     </Wrapper>
   );

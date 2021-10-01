@@ -6,9 +6,7 @@ const ListItem = styled.div`
   display: flex;
   justify-content: space-between;
 `;
-const Text = styled.p`
-  all: unset;
-`;
+const Text = styled.div``;
 const Remove = styled.button`
   margin-right: 1.5rem;
   background: none;
@@ -20,11 +18,11 @@ const Remove = styled.button`
   }
 `;
 
-const DoneListItem = ({ todo, onRemove }) => {
+const DoneListItem = ({ todo, onRemove, onToggle }) => {
   const { id, text, checked } = todo;
   return (
     <ListItem>
-      <Text>{text}</Text>
+      <Text onClick={() => onToggle(id)}>{text}</Text>
       <Remove onClick={() => onRemove(id)}>
         <AiOutlineMinusCircle />
       </Remove>
