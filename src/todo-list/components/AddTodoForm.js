@@ -1,12 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
+import useTodoList from '../hooks/useTodoList';
 
-const AddTodoForm = () => {
+function AddTodoForm() {
 
+    const { createTodo } = useTodoList();
+  
+    const onSubmit = (event) => {
+      event.preventDefault();
+      createTodo(event.target[0].value);
+      event.target[0].value = '';
+    } 
 
     return (
         <StyledFooter>
-            <StyledForm class="add-todo-form">
+            <StyledForm class="add-todo-form" onSubmit={onSubmit}>
                 <StyledInputContainer>
                     <StyledInput type="text" placeholder="새로운 할 일 추가" />
                 </StyledInputContainer>
