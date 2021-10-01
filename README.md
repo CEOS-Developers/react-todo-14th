@@ -1,4 +1,3 @@
-
 # 미션
 
 ## 미션 목표
@@ -8,7 +7,6 @@
 - React를 통한 어플리케이션 상태 관리 방법을 이해합니다.
 - React Hooks에 대한 기초를 이해합니다.
 - Styled-Components를 통한 CSS-in-JS 및 CSS Preprocessor의 사용법을 익힙니다.
-
 
 ## Key Questions
 
@@ -21,7 +19,7 @@
 
 - 1주차 미션의 결과물을 그대로 React로 구현합니다
 - Functional Components를 사용합니다
-- React Hooks만을 사용해 상태를 관리합니다 
+- React Hooks만을 사용해 상태를 관리합니다
 - (이번주는 Redux, MobX, Recoil, SWR등의 외부 상태관리 라이브러리를 사용하지 않아도 미션 수행에 지장이 없습니다.)
 
 ## 선택 요건
@@ -34,11 +32,15 @@
 
 `npm start` : 로컬에서 react application을 자동으로 리로드하여 실행시켜줍니다.
 
-
 ## 겪었던 문제들:
-- npm start/yarn start : 
+
+- npm start/yarn start :
+
 ```
 yarn add global react-scripts
 npm install -g react-scripts
 
 ```
+
+- 배열 전달 후 map 사용 불가:
+  https://devbirdfeet.tistory.com/47
