@@ -1,43 +1,28 @@
 import React, { useState } from "react";
 import "./components.lists.todolist.css";
 import Form from "../form/components.form.form";
+import logo from "./bin.png";
 
 function Todo({ todo, index, finishTodo, deleteTodo }) {
   return (
     <li>
-      <div>{todo.text}</div>
-      <div>
-        <button onClick={() => finishTodo(index, todo.text)}>complete</button>
-        <button onClick={() => deleteTodo(index, todo.text)}>delete</button>
+      <span onClick={() => finishTodo(index, todo.text)}>{todo.text}</span>
+      <div className="button">
+        <img
+          src={logo}
+          alt="img"
+          onClick={() => deleteTodo(index, todo.text)}
+          align="right"
+        />
       </div>
     </li>
   );
 }
 
 export function TodoList() {
-  const [listOfTodo, setTodo] = useState([
-    {
-      text: "Hello",
-    },
-    {
-      text: "HelloHI",
-    },
-    {
-      text: "HIHello",
-    },
-  ]);
+  const [listOfTodo, setTodo] = useState([]);
 
-  const [listOfDone, setDone] = useState([
-    {
-      text: "Hello1",
-    },
-    {
-      text: "HelloHI2",
-    },
-    {
-      text: "HIHello3",
-    },
-  ]);
+  const [listOfDone, setDone] = useState([]);
 
   const addTodo = (text) => {
     const tempTodo = [...listOfTodo, { text }];

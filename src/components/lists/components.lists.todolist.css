@@ -31,3 +31,9 @@
 .doneList li {
   margin: 10px;
 }
+
+.button img {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 1rem;
+}
