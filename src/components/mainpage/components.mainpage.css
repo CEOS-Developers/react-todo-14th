@@ -1,0 +1,26 @@
+.container {
+  border-radius: 10px;
+  background-color: white;
+  width: 40rem;
+  height: 50rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  vertical-align: middle;
+  align-items: stretch;
+  box-shadow: 0 0 5px;
+}
+
+.container h1 {
+  font-family: "SBAggroB";
+  border-bottom: solid;
+  padding-bottom: 1rem;
+}
+
+.container input {
+  text-align: center;
+  width: 39.5rem;
+  height: 2rem;
+  border-radius: 10px;
+  border: solid 2px;
+}
