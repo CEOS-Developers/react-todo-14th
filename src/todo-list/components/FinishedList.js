@@ -7,18 +7,6 @@ function FinishedList() {
 
     const { finishedTodos } = useTodoList();
 
-    useEffect(() => {
-      console.log('==================================')
-      console.log(' ')
-      console.log(' ')
-      console.log(' ')
-        console.log('finished: ', finishedTodos);
-        console.log(' ')
-        console.log(' ')
-        console.log(' ')
-        console.log('==================================')
-    }, [finishedTodos])
-
     const renderFinishedTodos = () => {
       return (
           <StyledUl>

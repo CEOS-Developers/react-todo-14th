@@ -7,18 +7,6 @@ function WaitingList() {
 
     const { waitingTodos } = useTodoList();
 
-    useEffect(() => {
-      console.log('==================================')
-      console.log(' ')
-      console.log(' ')
-      console.log(' ')
-        console.log('waitingTodos: ', waitingTodos);
-        console.log(' ')
-        console.log(' ')
-        console.log(' ')
-        console.log('==================================')
-    }, [waitingTodos])
-
     const renderWaitingTodos = () => {
       return  (
         <StyledUl>

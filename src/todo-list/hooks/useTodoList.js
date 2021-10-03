@@ -9,13 +9,6 @@ function useTodoList () {
     const [waitingTodos, setWaitingTodos] = useWaitingTodos(waitingTodosListAtom);
     const [finishedTodos, setFinishedTodos] = useFinishedTodos(finishedTodosListAtom);
 
-    useEffect(() => {
-        // console.log('==================================')
-        // console.log('waitingTodos: ', waitingTodos);
-        // console.log('finishedTodos: ', finishedTodos);
-        // console.log('==================================')
-      }, [waitingTodos, finishedTodos])
-
     const createTodo = (todoContent) => {
         setWaitingTodos([
             {
