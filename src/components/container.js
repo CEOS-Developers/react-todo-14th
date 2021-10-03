@@ -17,5 +17,5 @@ const Container = styled.div`
     width: 280px;
     height: 480px;
   }
-`
+`;
 export default Container;
