@@ -2,10 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import TodoItem from './TodoItem';
 function TodoList({ title, isDone, todoList, setTodoList }) {
-  const count =
-    todoList != null
-      ? todoList.filter((todo) => todo.isDone === isDone).length
-      : 0;
+  const count = todoList
+    ? todoList.filter((todo) => todo.isDone === isDone).length
+    : 0;
   return (
     <Wrapper>
       <Title>

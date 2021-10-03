@@ -20,10 +20,10 @@ function TodoItem({ todoList, todoItem, setTodoList }) {
   const onClickEditButton = () => {
     setEdit(!edit);
   };
-  const onHandleInputChange = (e) => {
+  const handleInputChange = (e) => {
     setNewTodo(e.target.value);
   };
-  const onHandleEditTodo = () => {
+  const handleEditTodo = () => {
     todoList = todoList.map((todo) => ({
       ...todo,
       content: todo.id === todoItem.id ? newTodo : todo.content,
@@ -36,7 +36,7 @@ function TodoItem({ todoList, todoItem, setTodoList }) {
     <TodoItemWrapper>
       <TodoImg src={choonsik}></TodoImg>
       {edit ? (
-        <Input value={newTodo} onChange={onHandleInputChange} />
+        <Input value={newTodo} onChange={handleInputChange} />
       ) : (
         <Todo onClick={toggleTodo} isDone={todoItem.isDone}>
           {todoItem.content}
@@ -45,7 +45,7 @@ function TodoItem({ todoList, todoItem, setTodoList }) {
       <div>
         <EditButton onClick={onClickEditButton}>
           {edit ? (
-            <EditButton onClick={onHandleEditTodo}>확인</EditButton>
+            <EditButton onClick={handleEditTodo}>확인</EditButton>
           ) : (
             <Img src={editImg} />
           )}

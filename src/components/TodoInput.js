@@ -5,7 +5,7 @@ function TodoInput({ todoList, setTodoList }) {
   const onHandleInputChange = (e) => {
     setTodo(e.target.value);
   };
-  const onTodoButtonClick = () => {
+  const handleTodoButtonClick = () => {
     const newTodo = {
       id: Date.now(),
       content: todo,
@@ -13,8 +13,7 @@ function TodoInput({ todoList, setTodoList }) {
     };
     //null값 입력 방지
     if (todo) {
-      todoList = todoList.concat(newTodo);
-      setTodoList(todoList);
+      setTodoList([...todoList, newTodo]);
     }
     setTodo('');
   };
@@ -25,7 +24,7 @@ function TodoInput({ todoList, setTodoList }) {
         onChange={onHandleInputChange}
         value={todo}
       />
-      <TodoButton onClick={onTodoButtonClick}>+</TodoButton>
+      <TodoButton onClick={handleTodoButtonClick}>+</TodoButton>
     </TodoInputBox>
   );
 }
