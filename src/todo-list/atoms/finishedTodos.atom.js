@@ -45,7 +45,7 @@ function useFinishedTodos(Atom) {
         Atom.setState(nextState);
     }
 
-    return [finishedTodos, setState]
+    return [Atom.state, setState]
 }
 
 export default useFinishedTodos

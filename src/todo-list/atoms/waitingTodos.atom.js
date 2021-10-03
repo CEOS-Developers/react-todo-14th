@@ -51,7 +51,7 @@ function useWaitingTodos(Atom) {
         Atom.setState(nextState);
     }
 
-    return [waitingTodos, setState]
+    return [Atom.state, setState]
 }
 
 export default useWaitingTodos

@@ -44,8 +44,6 @@ const StyledBtn = styled.button`
     
   background: center url(../../../assets/img/bin.png);
   background-size: cover;
-
-  /* visibility: hidden; */
 `
 
 export default TodoItem
