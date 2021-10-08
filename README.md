@@ -8,7 +8,7 @@ https://github.com/CEOS-Developers/react-todo-14th
 
 # 🚩 결과물 링크(vercel로 배포)
 
-https://github.com/BonJunKu/react-messenger-14th/friends
+https://react-messenger-14th-one.vercel.app/friends
 
 # 🚩 미션 목표
 
