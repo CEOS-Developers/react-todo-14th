@@ -1,3 +1,5 @@
+[이번 과제 관련해서 쓴  글!](https://kiuk.notion.site/feat-only-React-93c3e8e5a04440a880396f380023ef50)
+
 ### 들어가며
 
 앞서 바닐라 JS 과제에서는 전역 상태 관리 기능을 구현하지 않아서 부모 컴포넌트에 자식 컴포넌트들 간 의존하고 있는 state을 두어 이를 자식들에게 props로 넘겨주는 전통적인 React의 **State 끌어올리기** 방식을 사용했습니다. [참고 - State 끌어올리기](https://ko.reactjs.org/docs/lifting-state-up.html)
